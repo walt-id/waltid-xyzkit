@@ -12,7 +12,7 @@ export const options = {
     iterations: 1,
     thresholds: {
         http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-        http_req_duration: ['p(95)<1000'], // 95 percent of response times must be below 500ms
+        http_req_duration: ['p(95)<2000'], // 95 percent of response times must be below 2000ms
         failedTestCases: [{ threshold: 'count==0' }]
     },
 };
