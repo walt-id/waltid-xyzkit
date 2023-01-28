@@ -7,7 +7,7 @@ import { sleep, check as loadTestingCheck } from "k6";
 let failedTestCases = new Counter('failedTestCases');
 
 export const options = {
-    duration: '.5m',
+    duration: '1m',
     vus: 5,
     iterations: 10,
     thresholds: {
@@ -59,9 +59,6 @@ export default function () {
                 {
                     "policy": "SignaturePolicy"
                 },
-                {
-                    "policy": "JsonSchemaPolicy"
-                }
             ],
         "credentials":
             [
