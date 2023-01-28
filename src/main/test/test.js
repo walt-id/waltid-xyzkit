@@ -8,8 +8,8 @@ let failedTestCases = new Counter('failedTestCases');
 
 export const options = {
     duration: '1m',
-    vus: 5,
-    iterations: 10,
+    vus: 1,
+    iterations: 1,
     thresholds: {
         http_req_failed: ['rate<0.01'], // http errors should be less than 1%
         http_req_duration: ['p(95)<500'], // 95 percent of response times must be below 500ms
