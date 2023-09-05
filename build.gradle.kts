@@ -88,7 +88,7 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-hocon:2.7.3")
 
     // Logging
-    implementation("io.github.oshai:kotlin-logging-jvm:4.0.0-beta-22")
+    implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
     implementation("org.slf4j:slf4j-simple:2.0.9")
     implementation("org.slf4j:jul-to-slf4j:2.0.9")
     implementation("io.ktor:ktor-client-cio-jvm:2.3.4")

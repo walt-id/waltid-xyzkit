@@ -11,7 +11,7 @@ import id.walt.config.WebConfig
 import id.walt.db.Db
 import id.walt.web.UserApi.helloApi
 import id.walt.web.plugins.*
-import io.github.oshai.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
