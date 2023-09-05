@@ -35,7 +35,7 @@ class Walt : CliktCommand(
         """
 ) {
     init {
-        versionOption(Values.version, message = {
+        versionOption(Values.VERSION, message = {
             """
             XYZ Kit: $it${if (Values.isSnapshot) " - SNAPSHOT VERSION, use only for demo and testing purposes" else " - stable release"}
             Environment: ${System.getProperty("java.runtime.name")} of ${System.getProperty("java.vm.name")} (${
@@ -79,20 +79,20 @@ object WaltCLI {
 
             args.forEach { arg -> println(arg) }
 
-            log.info("Reading configurations...")
+            log.info { "Reading configurations..." }
             ConfigManager.loadConfigs(args)
 
             Db.start()
 
             val webConfig = ConfigManager.getConfig<WebConfig>()
-            log.info("Starting web server (binding to ${webConfig.webHost}, listening on port ${webConfig.webPort})...")
+            log.info { "Starting web server (binding to ${webConfig.webHost}, listening on port ${webConfig.webPort})..." }
             embeddedServer(CIO, port = webConfig.webPort, host = webConfig.webHost, module = Application::module)
                 .start(wait = true)
 
         } catch (e: Exception) {
             println(e.message)
 
-            if (log.isDebugEnabled)
+            if (log.isDebugEnabled())
                 e.printStackTrace()
         }
     }
