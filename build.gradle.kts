@@ -97,8 +97,8 @@ dependencies {
     // Test
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.8.20")
 
-    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
-    testImplementation("io.kotest:kotest-assertions-core:5.5.5")
+    testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.7.2")
     testImplementation("io.kotest.extensions:kotest-assertions-ktor:2.0.0")
     testImplementation("io.ktor:ktor-server-tests-jvm:2.3.4")
 
