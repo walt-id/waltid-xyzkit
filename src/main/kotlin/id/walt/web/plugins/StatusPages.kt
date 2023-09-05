@@ -1,6 +1,6 @@
 package id.walt.web.plugins
 
-import id.walt.UnauthorizedException
+import id.walt.web.UnauthorizedException
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
