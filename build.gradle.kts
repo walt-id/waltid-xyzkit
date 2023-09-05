@@ -50,8 +50,7 @@ dependencies {
     implementation("io.ktor:ktor-server-cio-jvm:2.3.4")
 
     // Ktor server external libs
-    // TODO upgrade 2.4.0 or use: implementation("io.ktor:ktor-server-swagger:2.3.4")
-    implementation("io.github.smiley4:ktor-swagger-ui:1.4.0")
+    implementation("io.github.smiley4:ktor-swagger-ui:2.4.0")
 
     // Ktor client
     implementation("io.ktor:ktor-client-core:2.3.4")
