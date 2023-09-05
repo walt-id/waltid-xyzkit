@@ -9,8 +9,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
 
     id("io.ktor.plugin") version "2.3.4"
-    id("org.owasp.dependencycheck") version "6.5.3"
-    id("com.github.jk1.dependency-license-report") version "2.0"
+    id("org.owasp.dependencycheck") version "8.4.0"
+    id("com.github.jk1.dependency-license-report") version "2.5"
     application
     `maven-publish`
 }
