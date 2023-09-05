@@ -65,7 +65,7 @@ object UserApi {
                         }
                     }
                 }) {
-                    val id = UUID.fromString(context.parameters.get("id"))
+                    val id = UUID.fromString(context.parameters["id"])
                     val user = transaction {
                         val row = Users.select { Users.id eq id }.single()
                         UserData(row[email], row[password], row[Users.id].toString())
@@ -108,7 +108,7 @@ object UserApi {
                         }
                     }
                 }) {
-                    val id = UUID.fromString(context.parameters.get("id"))
+                    val id = UUID.fromString(context.parameters["id"])
                     transaction {
                         Users.deleteWhere { Users.id eq id }
                     }
