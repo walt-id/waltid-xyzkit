@@ -13,6 +13,8 @@ plugins {
     id("com.github.jk1.dependency-license-report") version "2.5"
     application
     `maven-publish`
+
+    id("com.github.ben-manes.versions") version "0.47.0"
 }
 
 group = "id.walt"
