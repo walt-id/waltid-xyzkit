@@ -102,8 +102,7 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm:2.3.4")
 
     // CLI
-    implementation("com.github.ajalt.clikt:clikt-jvm:3.5.2")
-    implementation("com.github.ajalt.clikt:clikt:3.5.2")
+    implementation("com.github.ajalt.clikt:clikt:4.2.0")
 
 }
 
