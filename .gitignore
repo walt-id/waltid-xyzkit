@@ -22,7 +22,7 @@ gradle.properties
 
 .vscode
 
-# WaltID SSI-Kit
+# walt.id
 keys/
 *.db
 /data-20210719/
@@ -32,7 +32,7 @@ data
 logs
 keystore
 
-secret*
+secret_*
 
 credential-store
 
