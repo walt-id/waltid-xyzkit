@@ -85,8 +85,8 @@ dependencies {
     /* -- Misc --*/
 
     // Config
-    implementation("com.sksamuel.hoplite:hoplite-core:2.7.3")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:2.7.3")
+    implementation("com.sksamuel.hoplite:hoplite-core:2.8.0.RC2")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:2.8.0.RC2")
 
     // Logging
     implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
