@@ -4,11 +4,19 @@ import com.github.jk1.license.render.InventoryHtmlReportRenderer
 import com.github.jk1.license.render.ReportRenderer
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-plugins {
-    kotlin("jvm") version "1.9.10"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
+object Versions {
+    const val KOTLIN_VERSION = "1.9.10" // also change 2 plugins
+    const val KTOR_VERSION = "2.3.4" // also change 1 plugin
+    const val COROUTINES_VERSION = "1.7.3"
+    const val EXPOSED_VERSION = "0.43.0"
+    const val HOPLITE_VERSION = "2.8.0.RC2"
+}
 
-    id("io.ktor.plugin") version "2.3.4"
+plugins {
+    kotlin("jvm") version "1.9.10" // Versions.KOTLIN_VERSION
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10" // Versions.KOTLIN_VERSION
+
+    id("io.ktor.plugin") version "2.3.4" // Versions.KTOR_VERSION
     id("org.owasp.dependencycheck") version "8.4.0"
     id("com.github.jk1.dependency-license-report") version "2.5"
     application
@@ -28,79 +36,79 @@ repositories {
     mavenLocal()
 }
 
+
 dependencies {
 
     /* -- KTOR -- */
 
     // Ktor server
-    implementation("io.ktor:ktor-server-core-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-auth-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-sessions-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-auth-jwt-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-auto-head-response-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-double-receive-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-host-common-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-status-pages-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-compression-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-cors-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-forwarded-header-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-call-logging-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-call-id-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm:2.3.4")
-    implementation("io.ktor:ktor-server-cio-jvm:2.3.4")
+    implementation("io.ktor:ktor-server-core-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-auth-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-sessions-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-auth-jwt-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-auto-head-response-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-double-receive-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-host-common-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-status-pages-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-compression-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-cors-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-forwarded-header-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-call-logging-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-call-id-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-server-cio-jvm:${Versions.KTOR_VERSION}")
 
     // Ktor server external libs
     implementation("io.github.smiley4:ktor-swagger-ui:2.4.0")
 
     // Ktor client
-    implementation("io.ktor:ktor-client-core:2.3.4")
-    implementation("io.ktor:ktor-client-serialization:2.3.4")
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
-    implementation("io.ktor:ktor-client-json:2.3.4")
-    implementation("io.ktor:ktor-client-cio:2.3.4")
-    implementation("io.ktor:ktor-client-logging-jvm:2.3.4")
+    implementation("io.ktor:ktor-client-core:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-client-serialization:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-client-content-negotiation:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-client-json:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-client-cio:${Versions.KTOR_VERSION}")
+    implementation("io.ktor:ktor-client-logging-jvm:${Versions.KTOR_VERSION}")
 
 
     /* -- Kotlin -- */
 
     // Kotlinx.serialization
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:2.3.4")
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:${Versions.KTOR_VERSION}")
 
     // Date
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES_VERSION}")
 
 
     /* -- Database --*/
 
     // DB
-    implementation("org.jetbrains.exposed:exposed-core:0.43.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.43.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.43.0")
-    implementation("org.xerial:sqlite-jdbc:3.43.0.0")
+    implementation("org.jetbrains.exposed:exposed-core:${Versions.EXPOSED_VERSION}")
+    implementation("org.jetbrains.exposed:exposed-jdbc:${Versions.EXPOSED_VERSION}")
+    implementation("org.jetbrains.exposed:exposed-dao:${Versions.EXPOSED_VERSION}")
+    implementation("org.xerial:sqlite-jdbc:3.42.0.1")
     //implementation("org.postgresql:postgresql:42.5.4")
 
     /* -- Misc --*/
 
     // Config
-    implementation("com.sksamuel.hoplite:hoplite-core:2.8.0.RC2")
-    implementation("com.sksamuel.hoplite:hoplite-hocon:2.8.0.RC2")
+    implementation("com.sksamuel.hoplite:hoplite-core:${Versions.HOPLITE_VERSION}")
+    implementation("com.sksamuel.hoplite:hoplite-hocon:${Versions.HOPLITE_VERSION}")
 
     // Logging
     implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
     implementation("org.slf4j:slf4j-simple:2.0.9")
     implementation("org.slf4j:jul-to-slf4j:2.0.9")
-    implementation("io.ktor:ktor-client-cio-jvm:2.3.4")
+    implementation("io.ktor:ktor-client-cio-jvm:${Versions.KTOR_VERSION}")
 
     // Test
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.8.20")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:${Versions.KOTLIN_VERSION}")
 
-    testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
-    testImplementation("io.kotest:kotest-assertions-core:5.7.2")
-    testImplementation("io.kotest.extensions:kotest-assertions-ktor:2.0.0")
-    testImplementation("io.ktor:ktor-server-tests-jvm:2.3.4")
+    testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}")
+    testImplementation("io.ktor:ktor-server-tests-jvm:${Versions.KTOR_VERSION}")
 
     // CLI
     implementation("com.github.ajalt.clikt:clikt:4.2.0")
@@ -178,6 +186,6 @@ publishing {
 }
 
 licenseReport {
-    renderers = arrayOf<ReportRenderer>(InventoryHtmlReportRenderer("xyzkit-licenses-report.html","XYZ Kit"))
+    renderers = arrayOf<ReportRenderer>(InventoryHtmlReportRenderer("xyzkit-licenses-report.html", "XYZ Kit"))
     filters = arrayOf<DependencyFilter>(LicenseBundleNormalizer())
 }
