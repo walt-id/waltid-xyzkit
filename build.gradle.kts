@@ -104,7 +104,7 @@ dependencies {
     implementation("io.ktor:ktor-client-cio-jvm:${Versions.KTOR_VERSION}")
 
     // Test
-    testImplementation(kotlin("test"))
+    //testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}")
     testImplementation("io.ktor:ktor-server-tests-jvm:${Versions.KTOR_VERSION}")
 
@@ -158,6 +158,17 @@ publishing {
                     """.trimIndent()
                 )
                 url.set("https://walt.id")
+                licenses {
+                    license {
+                        name.set("The Apache Software License, Version 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git@github.com:walt-id/waltid-xyzkit.git")
+                    developerConnection.set("scm:git@github.com:walt-id/waltid-xyzkit.git")
+                    url.set("https://github.com/walt-id/waltid-xyzkit/tree/main")
+                }
             }
             from(components["java"])
         }
