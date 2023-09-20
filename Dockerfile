@@ -1,33 +1,15 @@
-FROM docker.io/openjdk:17-slim-buster AS openjdk-gradle
+FROM docker.io/gradle:jdk17 as buildstage
 
-ENV GRADLE_HOME /opt/gradle
+COPY src/ /work/src
+COPY gradle/ /work/gradle
+COPY build.gradle.kts settings.gradle.kts gradle.properties gradlew /work/
 
-RUN set -o errexit -o nounset \
-    && echo "Adding gradle user and group" \
-    && groupadd --system --gid 1000 gradle \
-    && useradd --system --gid gradle --uid 1000 --shell /bin/bash --create-home gradle \
-    && mkdir /home/gradle/.gradle \
-    && chown --recursive gradle:gradle /home/gradle \
-    \
-    && echo "Symlinking root Gradle cache to gradle Gradle cache" \
-    && ln -s /home/gradle/.gradle /root/.gradle
+WORKDIR /work
+RUN gradle clean installDist
 
-VOLUME /home/gradle/.gradle
+FROM docker.io/eclipse-temurin:17
 
-WORKDIR /opt
+COPY --from=buildstage /work/build/install/ /
+WORKDIR /waltid-xyzkit
 
-RUN apt-get update && apt-get upgrade --yes
-
-FROM openjdk-gradle AS walt-build
-COPY ./ /opt
-RUN ./gradlew clean build
-RUN tar xf /opt/build/distributions/waltid-xyzkit-1.SNAPSHOT.tar -C /opt
-
-FROM openjdk:17-slim-buster
-
-RUN mkdir /app
-COPY --from=walt-build /opt/waltid-xyzkit-* /app/
-
-WORKDIR /app
-
-ENTRYPOINT ["/app/bin/waltid-xyzkit"]
+ENTRYPOINT ["/waltid-xyzkit/bin/waltid-xyzkit"]
