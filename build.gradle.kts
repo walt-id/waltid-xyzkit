@@ -104,7 +104,7 @@ dependencies {
     implementation("io.ktor:ktor-client-cio-jvm:${Versions.KTOR_VERSION}")
 
     // Test
-    //testImplementation(kotlin("test"))
+    testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}")
     testImplementation("io.ktor:ktor-server-tests-jvm:${Versions.KTOR_VERSION}")
 
