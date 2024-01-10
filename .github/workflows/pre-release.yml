@@ -1,4 +1,4 @@
-name: Release on push to main
+name: Pre-release on push to main
 
 on:
   push:
@@ -7,13 +7,13 @@ on:
 
 jobs:
   release:
-    name: "Release"
+    name: "Pre-release"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Calculate release version
         run: |
-          echo "release_version=1.$(date +'%g%m%d%H%M').0-alpha" >> $GITHUB_ENV
+          echo "release_version=1.0.$(date +'%g%m%d%H%M')-SNAPSHOT" >> $GITHUB_ENV
       - name: Set version
         run: |
           sed -i "s/1.SNAPSHOT/${{ env.release_version }}/g" build.gradle.kts src/main/kotlin/id/walt/Values.kt
