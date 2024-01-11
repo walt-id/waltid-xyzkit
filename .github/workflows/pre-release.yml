@@ -1,7 +1,7 @@
 name: Pre-release on push to main
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
