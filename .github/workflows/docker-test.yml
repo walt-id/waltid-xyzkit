@@ -6,12 +6,9 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WALLET_BACKEND_PORT: 3000
-  ISSUER_API_PORT: 3001
-  VERIFIER_API_PORT: 3002
-  WALLET_FRONTEND_PORT: 3003
-  WEB_PORTAL_PORT: 3004
-  VC_REPO_PORT: 3005
+  WALLET_BACKEND_PORT: 7001
+  ISSUER_API_PORT: 7002
+  VERIFIER_API_PORT: 7003
 
 jobs:
   docker-compose:
@@ -27,8 +24,38 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Pull Docker Images
         run: docker-compose pull
       - name: Run Docker Compose
-        run: docker-compose up --abort-on-container-exit
+        run: docker-compose up -d
+      - name: Check container health
+        id: healthcheck
+        run: |
+          for container in wallet-api issuer-api verifier-api waltid-web-wallet web-portal vc-repo db phpmyadmin caddy; do
+            container_status=$(docker inspect --format='{{.State.Health.Status}}' $container)
+            if [ "$container_status" != "healthy" ]; then
+              echo "::error ::Container $container is not healthy"
+              exit 1
+            fi
+          done
+      - name: Check container logs for errors
+        run: |
+          for container in wallet-api issuer-api verifier-api waltid-web-wallet web-portal vc-repo db phpmyadmin caddy; do
+            if docker logs $container 2>&1 | grep -q "ERROR"; then
+              echo "::error ::Error found in container $container logs"
+              exit 1
+            fi
+          done
+      - name: Check application endpoints
+        run: |
+          for container_port in ${{ env.WALLET_BACKEND_PORT }} ${{ env.ISSUER_API_PORT }} ${{ env.VERIFIER_API_PORT }}; do
+            if [ -z "$container_port" ]; then
+              continue
+            fi
+            response=$(curl --silent --fail --output /dev/null --write-out '%{http_code}' http://localhost:$container_port)
+            if [ "$response" != "200" ]; then
+              echo "::error ::Application endpoint returned an error: $response"
+              exit 1
+            fi
+          done
