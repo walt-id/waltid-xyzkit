@@ -1,4 +1,4 @@
-name: test Dcoker Compose deployment 
+name: test Docker Compose deployment 
 
 on:
   push:
