@@ -27,20 +27,5 @@ jobs:
       - name: Wait for services to boot
         run: sleep 120s  
 
-      - name: Test endpoint 7001
-        run: curl -s http://localhost:7001
-        id: test_7001
-
-      - name: Test endpoint 7002
-        run: curl -s http://localhost:7002
-        id: test_7002
-
-      - name: Test endpoint 7003
-        run: curl -s http://localhost:7003
-        id: test_7003
-
-      - name: Check endpoint results
-        run: |
-          echo "Endpoint 7001 status: ${{ steps.test_7001.outputs.stdout }}"
-          echo "Endpoint 7002 status: ${{ steps.test_7002.outputs.stdout }}"
-          echo "Endpoint 7003 status: ${{ steps.test_7003.outputs.stdout }}"
+      - name: View Docker Compose Logs
+        run: docker-compose -f docker-compose/docker-compose.yaml logs db caddy phpmyadmin verifier-api issuer-api wallet-api vc-repo waltid-web-wallet web-portal   
