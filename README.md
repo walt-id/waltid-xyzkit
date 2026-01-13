@@ -1,16 +1,16 @@
+## 🚨 Repository Moved
+
+> [!IMPORTANT]
+> This repository is no longer maintained.
+> 
+> All walt.id development continues in the monorepo:
+> 
+### 👉 Code **https://github.com/walt-id/waltid-identity** & Docs **https://docs.walt.id**
+
 <div align="center">
  <h1>XYZ Kit</h1>
  <span>by </span><a href="https://walt.id">walt.id</a>
  <p>...<p>
- 
- Test push 1
-
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit&metric=security_rating)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit&metric=ncloc)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=walt-id_waltid-xyzkit-examples&metric=alert_status)](https://sonarcloud.io/dashboard?id=walt-id_waltid-xyzkit)
 
 [![CI/CD Workflow for walt.id XYZ Kit](https://github.com/walt-id/waltid-xyzkit/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/walt-id/waltid-xyzkit/actions/workflows/build.yml)
 <a href="https://walt.id/community">
